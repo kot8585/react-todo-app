@@ -1,2 +1,2 @@
 # react-todo-app
-React로 TodoAppaksemfrl
+React로 TodoApp만들기 
