@@ -1,28 +1,28 @@
 import React, {useState} from 'react';
-import {v4 as uuidv4} from 'uuid';
 import AddTodo from './AddTodo';
+import { BsFillTrashFill } from "react-icons/bs";
 
 
 export default function TodoList() {
-  const [todoList, setTodoList] = useState([{id: '1234', name: '냥냥', isCompleted: false}]);
+  const [todoList, setTodoList] = useState([{id: '1234', text: '냥냥', isCompleted: false}]);
 
-  const addTodoHandler = (todo) => {
-    setTodoList([...todoList, {id: uuidv4(), name:todo, isCompleted: false}]);
+  const handleAdd = (todo) => {
+    setTodoList([...todoList, todo]);
   };
 
   const handleDelete = (id) => {
-    console.log(id);
+    setTodoList(todoList.filter(todo => todo.id !== id));
   }
 
   return (
     <section>
       <ul>
         {todoList.map((todo) => {
-          return <li key={todo.id}>{todo.name}</li>
+          return <li key={todo.id}>{todo.text}<BsFillTrashFill onClick={() => handleDelete(todo.id)}/></li>
         })}
       </ul>
 
-      <AddTodo onAdd={addTodoHandler}/>
+      <AddTodo onAdd={handleAdd}/>
     </section>
   );
 }
