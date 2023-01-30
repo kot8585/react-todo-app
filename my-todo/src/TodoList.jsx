@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import AddTodo from './AddTodo';
-import { BsFillTrashFill } from "react-icons/bs";
+import Todo from './Todo';
 
 
 export default function TodoList() {
@@ -26,13 +26,7 @@ export default function TodoList() {
     <section>
       <ul>
         {todoList.map((todo) => {
-          return <li key={todo.id}>
-            <input 
-            type='checkbox' 
-            value={todo.isCompleted}
-            onClick={() => handleChecked(todo.id)}/>
-          {todo.text}
-          <BsFillTrashFill onClick={() => handleDelete(todo.id)}/></li>
+          return <Todo todo={todo} onChecked={handleChecked} onDelete={handleDelete}/>
         })}
       </ul>
 
