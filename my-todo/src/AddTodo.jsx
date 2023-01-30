@@ -4,6 +4,11 @@ export default function AddTodo({addHandler}) {
   const [todoName, setTodoName] = useState('');
 
   const activeButton = () => {
+    todoName = todoName.trim();
+    if(todoName.length <= 0) {
+      setTodoName('');  
+      return;
+    } 
     addHandler(todoName);
     setTodoName('');
   }
