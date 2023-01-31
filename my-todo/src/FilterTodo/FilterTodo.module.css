@@ -1,0 +1,27 @@
+.header {
+  background-color: var(--color-bg-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom: 1px solid gray;
+  padding: 0 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+}
+
+.filter {
+  color: #ed8b3b;
+  font-weight: bolder;
+  text-transform: capitalize;
+  padding : 0 0 2px 0;
+}
+
+.filter.selected {
+  border-bottom: 2px solid whitesmoke;
+  color: var(--color-accent);
+}

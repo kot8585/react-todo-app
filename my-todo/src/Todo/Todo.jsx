@@ -10,7 +10,9 @@ export default function Todo({todo, onChecked, onDelete}) {
           checked={todo.isCompleted}
           onChange={() => onChecked(todo.id)}/>
         {todo.text}
-        <BsFillTrashFill onClick={() => onDelete(todo.id)}/>
+        <button  onClick={() => onDelete(todo.id)}>
+          <BsFillTrashFill/>
+        </button>
       </li>
   );
 }

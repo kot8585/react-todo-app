@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import AddTodo from './AddTodo';
-import Todo from './Todo';
+import AddTodo from '../AddTodo/AddTodo';
+import Todo from '../Todo/Todo';
 
 export default function TodoList({type}) {
   const [todoList, setTodoList] = useState([{id: '1234', text: '냥냥', isCompleted: false}]);

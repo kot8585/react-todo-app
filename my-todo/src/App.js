@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import FilterTodo from './FilterTodo';
-import TodoList from './TodoList';
+import FilterTodo from './FilterTodo/FilterTodo';
+import TodoList from './TodoList/TodoList';
 
 const types = ['all', 'active', 'completed']
 function App() {  
   const [type, setType] = useState(types[0]);
 
   return (
-    <div>
-      <FilterTodo types={types} changeType={(type) => setType(type)}/>
+    <>
+      <FilterTodo types={types} selectedType={type} changeType={(type) => setType(type)}/>
       <TodoList type={type}/>
-    </div>
+    </>
   );
 }
 
