@@ -1,0 +1,34 @@
+.list {
+  display: flex;
+  gap: 5px;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.checkbox{
+  width: 17px;
+  height: 17px;
+  accent-color: var(--color-accent);
+}
+
+.text {
+  flex-grow: 1;
+}
+
+.deleteBtn {
+  background: var(--color-scrollbar);
+  border-radius: 1rem;
+  padding: 2px;
+}
+
+.deleteIcon {
+  color: white;
+  font-size: 15px;
+  padding: 2px 0 0 0;
+}
+
+.text.completed {
+  content: '';
+  text-decoration: line-through;
+  color: var(--color-grey);
+}

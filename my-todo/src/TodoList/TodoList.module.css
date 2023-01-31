@@ -1,0 +1,12 @@
+.container {
+  /* height가 이상해 */
+  height: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7px;
+}
+
+.list {
+  
+}

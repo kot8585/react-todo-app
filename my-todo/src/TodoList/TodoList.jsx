@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
+import styles from './TodoList.module.css'
 
 export default function TodoList({type}) {
   const [todoList, setTodoList] = useState([{id: '1234', text: '냥냥', isCompleted: false}]);
@@ -24,8 +25,8 @@ export default function TodoList({type}) {
   const filterTodo = getFilteredItems(todoList, type);
 
   return (
-    <section>
-      <ul>
+    <section className={styles.container}>
+      <ul className={styles.list}>
         {filterTodo.map((todo) => (
           <Todo 
             key={todo.id} 
