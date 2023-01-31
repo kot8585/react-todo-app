@@ -5,8 +5,7 @@ export default function Header({filters, filter, onFilterChange}) {
     <header>
       <ul>
         {filters.map((value, index) => <li key={index}>
-          <button onClick={(value) => {
-            console.log(value);
+          <button onClick={() => {
             onFilterChange(value)
             }}>{value}</button>
         </li>)}
