@@ -5,26 +5,42 @@
   align-items: center;
 }
 
-.checkbox{
+.checkbox {
   width: 17px;
   height: 17px;
   accent-color: var(--color-accent);
+  flex-shrink: 0;
 }
 
+/* todo 여러줄로 되도록 설정 */
 .text {
   flex-grow: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
-.deleteBtn {
-  background: var(--color-scrollbar);
-  border-radius: 1rem;
+.icon {
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-grey);
+  border-radius: 100%;
   padding: 2px;
+  margin-right: 5px;
+  text-align: center;
+  transition: all 150ms ease-out;
+  flex-shrink: 0;
 }
 
-.deleteIcon {
-  color: white;
+.icon:hover {
+  background-color: var(--color-accent);
+  transform: rotate(15deg) scale(1.05);
+}
+
+.button {
+  background: transparent;
+  color: var(--color-text);
   font-size: 15px;
-  padding: 2px 0 0 0;
+  vertical-align: middle;
 }
 
 .text.completed {
@@ -32,3 +48,4 @@
   text-decoration: line-through;
   color: var(--color-grey);
 }
+

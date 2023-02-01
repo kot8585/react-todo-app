@@ -12,11 +12,13 @@ export default function Todo({todo, onChecked, onDelete}) {
           checked={todo.isCompleted}
           onChange={() => onChecked(todo.id)}/>
         <span className={`${styles.text} ${todo.isCompleted && styles.completed}`}>{todo.text}</span>
-        <button  
-        className={styles.deleteBtn}
-        onClick={() => onDelete(todo.id)}>
-          <BsFillTrashFill className={styles.deleteIcon}/>
-        </button>
+        <span className={styles.icon}>
+          <button  
+          className={styles.button}
+          onClick={() => onDelete(todo.id)}>
+            <BsFillTrashFill className={styles.deleteIcon}/>
+          </button>
+        </span>
       </li>
   );
 }
