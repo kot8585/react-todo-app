@@ -1,25 +1,43 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css'
 
+
 export default function TodoList({type}) {
-  const [todoList, setTodoList] = useState([{id: '1234', text: '냥냥', isCompleted: false}]);
+  const [todoList, setTodoList] = useState([]);
+  
+  console.log('here', localStorage.getItem('todoList'));
+  console.log('todo', todoList);
+
+
+  useEffect(() => {
+    setTodoList(JSON.parse(localStorage.getItem('todoList')));
+  }, []); 
+
 
   const handleAdd = (todo) => {
-    setTodoList([...todoList, todo]);
+    console.log('먀먀');
+    const todoListCopy = [...todoList, todo];
+    localStorage.setItem('todoList', JSON.stringify(todoListCopy));
+    setTodoList(todoListCopy);
   };
 
   //todo를 만들어서 전해주도록? 역할분리 고려해보기
   const handleDelete = (id) => {
-    setTodoList(todoList.filter(todo => todo.id !== id));
+    const todoListCopy = todoList.filter(todo => todo.id !== id);
+    localStorage.setItem('todoList', JSON.stringify(todoListCopy));
+    setTodoList(todoListCopy);
   };
 
   const handleChecked = (id) => {
     const todo = todoList.find((todo) => todo.id === id);
     todo.isCompleted = !todo.isCompleted;
+    const todoListCopy = [...todoList];
 
-    setTodoList([...todoList]);
+    localStorage.setItem('todoList', JSON.stringify(todoListCopy));
+    setTodoList(todoListCopy);
   };
 
   const filterTodo = getFilteredItems(todoList, type);
