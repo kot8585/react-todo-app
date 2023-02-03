@@ -26,6 +26,8 @@ export function DarkModeProvider({children}) {
 
 function updateDarkMode(darkMode){
   if(darkMode) {
+    console.log(document.documentElement.classList);
+    
     document.documentElement.classList.add('dark');
     localStorage.theme = 'dark';
   } else {

@@ -1,21 +1,25 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
 import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css'
 
 export default function TodoList({filter}) {
-  const [todos, setTodos] = useState([
-    {id: '123', text: '장보기', status: 'active'},
-    {id: '124', text: '공부하기', status: 'active'}
-  ]);
+  //❗️useState는 초기화할때 callback함수를 호출한다.
+  //초기값에 readTodosFromLocalStorage() 함수를 넣으면 리렌더링될때마다 계속 호출됌
+  const [todos, setTodos] = useState(() => readTodosFromLocalStorage());
+
 
   const handleAdd = (todo) => setTodos([...todos, todo]);
   //❗️ 이렇게도 짤 수 있구나. map에서 삼항연산자 쓰기
   const handleUpdate = (updated) => setTodos(todos.map(current => current.id === updated.id ? updated : current));
   const handleDelete = (deleted) => setTodos(todos.filter((t) => t.id !== deleted.id));
-  
-  const filtered = getFilteredItems(todos, filter);
 
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const filtered = getFilteredItems(todos, filter);
   return (
     <section className={styles.container}>
       <ul className={styles.list}>
@@ -32,6 +36,12 @@ export default function TodoList({filter}) {
       <AddTodo onAdd={handleAdd}/>
     </section>
   );
+}
+
+function readTodosFromLocalStorage() {
+  console.log('readTodosFromLocalStorage');
+  const todos = localStorage.getItem('todos');
+  return todos ? JSON.parse(todos) : [];
 }
 
 //❗️함수를 밖으로 뺐다! 
