@@ -1,0 +1,26 @@
+.footer {
+  background-color: var(--color-bg-dark);
+}
+  
+.form {
+  padding: 15px;
+  display: flex;
+}
+
+.input{
+  border: none;
+  outline: none;
+  flex: 1 1 auto;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.button {
+  padding: 5px 15px;
+  background-color: var(--color-accent);
+  opacity: 0.8;
+  color: white;
+  font-size: large;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
