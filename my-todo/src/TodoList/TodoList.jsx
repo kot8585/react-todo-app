@@ -6,16 +6,18 @@ import styles from './TodoList.module.css'
 
 
 export default function TodoList({type}) {
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem('todoList')));
   
   console.log('here', localStorage.getItem('todoList'));
   console.log('todo', todoList);
 
 
   useEffect(() => {
-    setTodoList(JSON.parse(localStorage.getItem('todoList')));
+    const todoList = localStorage.getItem('todoList');
+    setTodoList(todoList ? JSON.parse(todoList) : []);
   }, []); 
 
+  console.log('todoList',todoList);
 
   const handleAdd = (todo) => {
     console.log('먀먀');
@@ -62,6 +64,9 @@ export default function TodoList({type}) {
 }
 
 function getFilteredItems(todoList, type)  {
+  if(!todoList) {
+    return [];
+  }
   switch(type) {
       case 'all':
         return todoList;
